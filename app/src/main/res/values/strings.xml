@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Android Beginning</string>
+    <string name="edit_text_placeholder">Placeholder</string>
+    <string name="button_name">Button</string>
+    <string name="long_text">Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text</string>
 </resources>
