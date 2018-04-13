@@ -4,7 +4,7 @@
   "description": "Learning Android",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cycjimmy/android-beginning.git"
+    "url": "git+https://github.com/cycdpoCodeLab/android-beginning.git"
   },
   "keywords": [
     "android",
@@ -12,7 +12,7 @@
   ],
   "author": "cycjimmy <cycjimmy@gmail.com> (https://github.com/cycjimmy)",
   "bugs": {
-    "url": "https://github.com/cycjimmy/android-beginning/issues"
+    "url": "https://github.com/cycdpoCodeLab/android-beginning/issues"
   },
-  "homepage": "https://github.com/cycjimmy/android-beginning#readme"
+  "homepage": "https://github.com/cycdpoCodeLab/android-beginning#readme"
 }
