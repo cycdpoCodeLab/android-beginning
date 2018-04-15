@@ -1,5 +1,7 @@
 package tech.cycjimmy.androidbeginning;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -14,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -22,27 +25,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ImageView imageView;
     private CheckBox checkBox;
+    private static final String TAG = "tag";
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate: MainActivity");
 
         // 将布局XML文件引入到activity当中
         setContentView(R.layout.activity_main);
 
         // 测试点击事件
-        Button myButton = findViewById(R.id.button);
-        ImageButton myImageButton = findViewById(R.id.image_button);
+        Button button = findViewById(R.id.button);
+        Button button2 = findViewById(R.id.button2);
+
+        ImageButton imageButton = findViewById(R.id.image_button);
         imageView = findViewById(R.id.image);
 
-        myButton.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("clicked Button!");
+                // 无返回结果的页面跳转
+                Intent intent = new Intent(context, SecondActivity.class);
+                MainActivity.this.startActivity(intent);
             }
         });
 
-        myImageButton.setOnClickListener(new MyOnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 有返回结果的页面跳转
+                Intent intent = new Intent(context, ThirdActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
+        imageButton.setOnClickListener(new MyOnClickListener() {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
@@ -70,11 +90,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.i("tag", isChecked + "");
+                Log.i(TAG, isChecked + "");
 
                 if (isChecked) {
                     String text = checkBox.getText().toString();
-                    Log.i("tag", "onCheckedChanged: " + text);
+                    Log.i(TAG, "onCheckedChanged: " + text);
                 }
             }
         });
@@ -86,11 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.radio1:
-                        Log.i("tag", "Radio1");
+                        Log.i(TAG, "Radio1");
                         break;
 
                     case R.id.radio2:
-                        Log.i("tag", "Radio2");
+                        Log.i(TAG, "Radio2");
                         break;
                 }
             }
@@ -113,8 +133,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         multiAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer()); // 设置分隔符: 逗号
     }
 
+    /**
+     * 通过startActivityForResult跳转，接收返回数据的方法
+     *
+     * @param requestCode 请求的标识
+     * @param resultCode  跳转页面返回的标识
+     * @param data        跳转页面回传的数据
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == 2) {
+            String content = data.getStringExtra("data");
+
+            TextView textView = findViewById(R.id.textView);
+            textView.setText(content);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart: MainActivity");
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        Log.i(TAG, "onPostResume: MainActivity");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause: MainActivity");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop: MainActivity");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy: MainActivity");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart: MainActivity");
+    }
+
     @Override
     public void onClick(View v) {
-        Log.i("tag", "Implements onClick function");
+        Log.i(TAG, "Implements onClick function");
     }
 }

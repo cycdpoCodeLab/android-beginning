@@ -2,6 +2,8 @@
     <string name="app_name">Android Beginning</string>
     <string name="edit_text_placeholder">Placeholder</string>
     <string name="button_name">Button</string>
+    <string name="button2_name">Button2</string>
+    <string name="receive_text">Receive Text</string>
     <string name="long_text">Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text</string>
     <string name="image_contentDescription">imageContentDescription</string>
     <string name="toggleButton_textOn">On</string>
@@ -9,4 +11,5 @@
     <string name="checkBox_text">CheckBox</string>
     <string name="radio1_text">Radio1</string>
     <string name="radio2_text">Radio2</string>
+    <string name="secondActivity_title">Second Activity</string>
 </resources>
